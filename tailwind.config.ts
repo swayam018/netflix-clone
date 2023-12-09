@@ -22,7 +22,10 @@ const config: Config = {
         '23': '85px',
         '17': '68px',
         '19': '78px',
-        '18':'72px'
+        '18': '72px',
+        '76':'305px',
+        '82': '358px',
+        '86':'407px',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

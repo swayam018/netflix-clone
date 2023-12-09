@@ -9,8 +9,8 @@ function Register() {
         <div className='bg-white'>
             <Navbar opacity={0} slate={50} />
             <hr />
-            <div className=' bg-slate-50 h-full flex flex-col items-center gap-10 pt-10'>
-                <div className=' [&>*]:text-slate-950 flex flex-col gap-4 w-80 justify-center items-center'>
+            <div className=' bg-slate-50 h-full flex flex-col items-center gap-10'>
+                <div className=' [&>*]:text-slate-950 flex flex-col gap-5 w-82 justify-center items-center'>
                     <Image src={settingtab} alt='settingup' width={200} height={100} />
                     <span className='text-center'>STEP 1 OF 3</span>
                     <span className=' text-4xl font-bold text-center'>Finish setting up your account</span>
