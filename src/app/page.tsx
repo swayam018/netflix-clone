@@ -48,14 +48,14 @@ export default function Home() {
       </div>
 
       <div className=' h-2 bg-hrbar-400 ' />
-      <div className=' w-11/12 pt-8 pb-8 m-auto flex flex-row justify-center items-center gap-10 max-lg:flex-col max-xl:w-full max-md:gap-0 max-lg:gap-0 '>
+      <div className=' w-11/12 pt-8 pb-8 m-auto flex flex-row justify-center items-center gap-10 max-lg:flex-col max-xl:w-full max-md:gap-0 max-lg:gap-0 max-[517px]:m-0 '>
         <div className='relative overflow-hidden'>
           <Image src={mobile} alt='Tv' width={508} height={80} className='relative z-10' />
-          <div className='w-fit h-24 flex flex-row gap-5 bg-black border-2 border-hrbar-400 rounded-lg p-2 relative bottom-28 left-24 z-50'>
-            <Image src={strangerThings} alt='stranger-things' width={56} height={40} />
-            <div className='flex flex-col gap-1 justify-center'>
-              <span className=' font-bold'>Stranger Things</span>
-              <span className=' text-blue-700'>Downloading....</span>
+          <div className=' w-fit h-24 flex flex-row gap-5 bg-black border-2 border-hrbar-400 rounded-lg p-2 relative bottom-28 left-24 z-50  max-[517px]:bottom-20 max-[517px]:left-28 max-[491px]:left-28 max-[459px]:gap-4 max-[517px]:h-17 max-[468px]:left-24 max-[416px]:left-20  max-[389px]:left-17 max-[362px]:left-12'>
+            <Image src={strangerThings} alt='stranger-things' width={56} height={40} className=' max-[517px]:w-11'/>
+            <div className='flex flex-col gap-1 justify-center '>
+              <span className=' font-bold max-[459px]:text-sm'>Stranger Things</span>
+              <span className=' text-blue-700 max-[459px]:text-sm'>Downloading....</span>
             </div>
             <Lottie animationData={downloadabutton} loop={true} />
           </div>
