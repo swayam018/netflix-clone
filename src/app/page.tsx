@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main>
       <div className="bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_medium.jpg')]" >
-        <Navbar />
+        <Navbar opacity={70 } slate={950} />
         <div className='flex bg-slate-950 bg-opacity-70 pt-56 pb-40 items-center justify-center max-sm:pt-19 max-md:pt-28 max-sm:pb-20'>
           <div className='flex flex-col w-10/12 justify-center item-center gap-5'>
             <span className=' text-5xl text-slate-50 font-bold text-center max-sm:text-4xl'>The biggest Indian hits. Ready to watch here from ₹149.</span>

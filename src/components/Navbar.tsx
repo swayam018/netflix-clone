@@ -4,10 +4,10 @@ import React from 'react'
 import netflixlog from '../../public/Netflix_logo.svg';
 import languagesign from '../../public/Language-sign.svg';
 
-function Navbar() {
+function Navbar({opacity,slate}:any) {
   return (
     <header>
-      <nav className='flex flex-row items-center justify-between h-20 px-16 bg-slate-950 bg-opacity-70 max-md:px-4 max-md:h-28' >
+      <nav className={`flex flex-row items-center justify-between h-20 px-16 bg-slate-${slate} bg-opacity-${opacity} max-md:px-4 max-md:h-28 ` } >
         <div>
           <Image src={netflixlog} alt="Netlix-Logo" width={146} height={40} />
         </div>

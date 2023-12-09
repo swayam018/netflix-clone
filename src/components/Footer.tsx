@@ -18,7 +18,7 @@ function Footer() {
         "Legal Notices",
        " Only on Netflix"]
   return (
-      <div className='flex flex-col gap-8 m-auto w-10/12 mb-2'> 
+      <div className='flex flex-col gap-8 m-auto w-10/12 mb-2 mt-4'> 
           <div>
               <span className='text-gray-400'>Questions? Call <Link href="tel:000-800-919-1694" className='underline'>000-800-919-1694</Link></span>
           </div>
