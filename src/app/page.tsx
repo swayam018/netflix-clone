@@ -9,6 +9,7 @@ import mobile from '../../public/mobile-0819.jpg';
 import strangerThings from '../../public/stranger-things.png'
 import downloadabutton from '../../public/download.json';
 import Lottie from 'lottie-react';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -29,7 +30,7 @@ export default function Home() {
       </div>
 
 
-      <div className=' h-2 bg-hrbar-400'/>
+      <div className=' h-2 bg-hrbar-400' />
       <div className=' w-10/12 pt-8 pb-10 m-auto flex flex-row justify-center items-center gap-10 max-lg:flex-col max-xl:w-full '>
         <div className='flex flex-col justify-center w-5/12 gap-10 max-lg:w-11/12 max-lg:items-center '>
           <span className='text-5xl font-bold max-lg:text-center max-sm:text-4xl' >Enjoy on your TV</span>
@@ -38,37 +39,35 @@ export default function Home() {
         <div className='relative overflow-hidden'>
           <div className='relative overflow-hidden'>
             <Image src={Tv} alt='Tv' width={508} height={80} className='relative z-10' />
-          <video width="100%" height="100%" autoPlay loop muted  className='absolute inset-0 z-0 right-0'>
-            <source src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-in-0819.m4v" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+            <video width="100%" height="100%" autoPlay loop muted className='absolute inset-0 z-0 right-0'>
+              <source src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-in-0819.m4v" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>
 
-      <div className=' h-2 bg-hrbar-400 '/>
-      <div className=' w-10/12 pt-8 pb-8 m-auto flex flex-row justify-center items-center gap-10 max-lg:flex-col max-xl:w-full '>
-      <div className='relative overflow-hidden'>
-          <div className='relative overflow-hidden '>
-            <Image src={mobile} alt='Tv' width={508} height={80} className='relative z-10' />
-            <div className='w-fit h-24 flex flex-row gap-5 bg-black border-2 border-hrbar-400 rounded-lg p-2 relative bottom-28 left-24 z-50'>
-              <Image src={strangerThings } alt='stranger-things' width={56} height={40} />
-              <div className='flex flex-col gap-1 justify-center'>
-                <span className=' font-bold'>Stranger Things</span>
-                <span className=' text-blue-700'>Downloading....</span>
-              </div>
-              <Lottie animationData={downloadabutton} loop={true} />
+      <div className=' h-2 bg-hrbar-400 ' />
+      <div className=' w-11/12 pt-8 pb-8 m-auto flex flex-row justify-center items-center gap-10 max-lg:flex-col max-xl:w-full max-md:gap-0 max-lg:gap-0 '>
+        <div className='relative overflow-hidden'>
+          <Image src={mobile} alt='Tv' width={508} height={80} className='relative z-10' />
+          <div className='w-fit h-24 flex flex-row gap-5 bg-black border-2 border-hrbar-400 rounded-lg p-2 relative bottom-28 left-24 z-50'>
+            <Image src={strangerThings} alt='stranger-things' width={56} height={40} />
+            <div className='flex flex-col gap-1 justify-center'>
+              <span className=' font-bold'>Stranger Things</span>
+              <span className=' text-blue-700'>Downloading....</span>
             </div>
+            <Lottie animationData={downloadabutton} loop={true} />
           </div>
         </div>
         <div className='flex flex-col justify-center w-5/12 gap-10 max-lg:w-11/12 max-lg:items-center '>
-          <span className='text-5xl font-bold max-lg:text-center max-sm:text-4xl' >Download your shows to watch offline</span>
+          <span className='text-5xl font-bold max-lg:text-center max-sm:text-4xl leading-normal' >Download your shows to watch offline</span>
           <span className='text-2xl max-lg:text-center max-sm:text-xl'>Save your favourites easily and always have something to watch.</span>
         </div>
       </div>
 
 
-      <div className=' h-2 bg-hrbar-400'/>
+      <div className=' h-2 bg-hrbar-400' />
       <div className=' w-10/12 pt-8 pb-10 m-auto flex flex-row justify-center items-center gap-10 max-lg:flex-col max-xl:w-full '>
         <div className='flex flex-col justify-center w-5/12 gap-10 max-lg:w-11/12 max-lg:items-center '>
           <span className='text-5xl font-bold max-lg:text-center max-sm:text-4xl' >Watch everywhere</span>
@@ -77,17 +76,17 @@ export default function Home() {
         <div className='relative overflow-hidden'>
           <div className='relative overflow-hidden'>
             <Image src={Tvsecond} alt='Tv' width={508} height={80} className='relative z-10' />
-          <video width="64%" height="100%" autoPlay loop muted className='absolute inset-y-9 inset-x-23 z-0 max-[476px]:inset-y-8 max-[476px]:inset-x-19 max-[416px]:inset-x-17 max-[398px]:inset-y-7 max-[364px]:insest-x-2'>
-            <source src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices-in.m4v" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+            <video width="64%" height="100%" autoPlay loop muted className='absolute inset-y-9 inset-x-23 z-0 max-[476px]:inset-y-8 max-[476px]:inset-x-19 max-[416px]:inset-x-17 max-[398px]:inset-y-7 max-[364px]:insest-x-2'>
+              <source src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices-in.m4v" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>
 
-      <div className=' h-2 bg-hrbar-400'/>
+      <div className=' h-2 bg-hrbar-400' />
       <div className=' w-10/12 pt-8 pb-10 m-auto flex flex-row justify-center items-center gap-10 max-lg:flex-col max-xl:w-full '>
-      <div className='relative overflow-hidden'>
+        <div className='relative overflow-hidden'>
           <div className='relative overflow-hidden'>
             <Image src={cartoon} alt='Tv' width={508} height={80} className='relative z-10' />
           </div>
@@ -98,6 +97,8 @@ export default function Home() {
         </div>
       </div>
 
+      <div className=' h-2 bg-hrbar-400 mb-5' />
+      <Footer/>
     </main>
   )
 }
