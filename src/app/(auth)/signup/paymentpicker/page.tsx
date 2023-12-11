@@ -1,11 +1,15 @@
+"use client"
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
 import tickround from '../../../../../public/check-mark.png';
-import tick from '../../../../../public/tick.png';
+import { checkout } from '@/components/Checkout';
+import { useSelector } from 'react-redux';
+
 function PaymentPicker() {
+    const prices: any = useSelector((state: any) => state.plan);
+
     return (
         <div className='bg-white'>
             <Navbar opacity={0} slate={50} />
@@ -18,8 +22,7 @@ function PaymentPicker() {
                     <span className='text-lg text-center'>Your payment is encrypted and you can change your payment method at anytime</span>
                     <span className='text-lg text-center'>Secure for peace of mind.</span>
                     <span className='text-lg text-center'>Cancel easily online.</span>
-
-                    <button className=' bg-red-700 px-8 py-2 rounded-md w-full hover:bg-customred-400 mt-4'><Link href="/signup/signupform" className=' text-slate-50 text-2xl'>Next</Link></button>
+                    <button className=' bg-red-700 px-8 py-2 rounded-md w-full hover:bg-customred-400 mt-4' onClick={()=>checkout({lineItems:[{price: "price_1OMGWGSBsdzm3xFe0lERPRyW",quantity:1}]})}><Link href="/signup/signupform" className=' text-slate-50 text-2xl ' >Next</Link></button>
                 </div>
                 <Footer />
             </div>

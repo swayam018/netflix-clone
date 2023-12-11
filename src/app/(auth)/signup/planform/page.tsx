@@ -10,24 +10,38 @@ import TabletMacIcon from '@mui/icons-material/TabletMac';
 import ComputerIcon from '@mui/icons-material/Computer';
 import TvIcon from '@mui/icons-material/Tv';
 import { grey, pink, red } from '@mui/material/colors';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectPrice } from '@/store/reducer/planSlice';
 
 
 function PlanForm() {
     const [bgcolor, setBgcolor] = useState(' bg-red-700')
     const [acitve, setAcitve] = useState(0);
     const [planamount, setPlanamount] = useState(149);
+    const dispatch = useDispatch();
+    const prices: any = useSelector((state: any) => state.plan);
 
     useEffect(() => {
-        changeColor(acitve, planamount);
+        if (prices.price === 149) {
+            changeColor(0, planamount);
+        }
+        else if (prices.price === 199) {
+            changeColor(1, planamount);
+        }
+        else if (prices.price === 449) {
+            changeColor(2, planamount);
+        }
+        else if (prices.price === 649) {
+            changeColor(3, planamount);
+        }
     }, [])
 
     const changeColor = (data: number, amount: number) => {
         setAcitve(data);
         setPlanamount(amount);
         setBgcolor('bg-customred-400');
-        console.log(amount);
+        dispatch(selectPrice(amount));
     }
-
     return (
         <div className='bg-white'>
             <Navbar opacity={0} slate={50} />
@@ -111,7 +125,7 @@ function PlanForm() {
                             </ul>
                         </div>
                     </div>
-                    <button className=' bg-red-700 px-8 py-2 rounded-md w-56 hover:bg-customred-400 mx-auto mt-8'><Link href={`/signup/paymentpicker?selectedplan=${planamount}`} className=' text-slate-50 text-2xl'>Next</Link></button>
+                    <Link href={`/signup/paymentpicker`} className=' text-2xl mx-auto'> <button className=' bg-red-700 px-8 py-2 rounded-md w-56 hover:bg-customred-400  mt-8  text-slate-50'>Next</button></Link>
                 </div>
                 <Footer />
             </div>
