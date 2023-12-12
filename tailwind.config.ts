@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+//import prettier-plugin-tailwindcss from '@/prettier-plugin-tailwindcss';
 
 const config: Config = {
   content: [
@@ -34,6 +35,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: []
 }
 export default config

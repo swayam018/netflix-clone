@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "@/store/Provider";
 //const inter = Inter({ subsets: ['latin'] })
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
+          <Toaster/>
           {children}
         </Providers>
       </body>

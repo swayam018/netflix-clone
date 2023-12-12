@@ -29,7 +29,7 @@ function Signup() {
                         <Image src={tick} alt='settingup' width={32} height={32} />
                         <span className='text-lg'>No ads and no extra fees. Ever.</span>
                     </div>
-                    <button className=' bg-red-700 px-8 py-2 rounded-md w-full hover:bg-customred-400 mt-4'><Link href="/signup/signupform" className=' text-slate-50 text-2xl'>Next</Link></button>
+                    <button className=' bg-red-700 px-8 py-2 rounded-md w-full hover:bg-customred-400 mt-4'><Link href="/signup/planform" className=' text-slate-50 text-2xl'>Next</Link></button>
                 </div>
                 <Footer />
             </div>

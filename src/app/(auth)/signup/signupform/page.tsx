@@ -1,9 +1,44 @@
+"use client"
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
+import axios from 'axios'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState ,useEffect} from 'react'
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 function SingUpForm() {
+    const statemail = useSelector((state: any) => state.plan);
+    const router = useRouter();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        if (statemail.mail.length > 0) {
+            setEmail(statemail.mail);
+            console.log(email);
+        }
+    }, [statemail.mail]);
+
+    const handleClick = async (e: any) => {
+        setLoading(true);
+        e.preventDefault();
+        axios.post('/api/user/signup',{email,password}).then((response) => {
+            if (response.data.success) {
+                toast.success(response.data.message);
+                router.push('/signup');
+            }
+            else {
+                toast.error(response.data.message);
+            }
+            setLoading(false);
+        }).catch((err) => {
+            console.log("error during sending data to server", err);
+            setLoading(false);
+        })
+    }
+
     return (
         <div className='bg-white'>
             <Navbar opacity={0} slate={50} />
@@ -15,9 +50,9 @@ function SingUpForm() {
                     <span className=' text-xl '>Just a few more steps and you're done!
                         We hate paperwork, too.</span>
                     <form>
-                        <input type='email' placeholder='Email' className='w-full text-xl pl-2 py-2 border border-gray-400 outline-none my-2 rounded-md'/>
-                        <input type='password' placeholder='Password'  className='w-full text-xl py-2 pl-2 border border-gray-400 my-2 outline-none rounded-md'/>
-                    <button className=' bg-red-700 px-8 py-2 rounded-md w-full hover:bg-customred-400'><Link href="/signup/signupform" className=' text-slate-50 text-2xl'>Next</Link></button>
+                        <input type='email' placeholder='Email' className='w-full text-xl pl-2 py-2 border border-gray-400 outline-none my-2 rounded-md' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                        <input type='password' placeholder='Password' className='w-full text-xl py-2 pl-2 border border-gray-400 my-2 outline-none rounded-md' value={password} onChange={(e) => { setPassword(e.target.value) }} />   
+                    <button className=' bg-red-700 px-8 py-2 rounded-md w-full hover:bg-customred-400 text-slate-50 text-2xl' onClick={handleClick}>{loading===true?"Next":"Loading...."}</button>
                     </form>
                 </div>
                 <Footer />

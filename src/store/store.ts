@@ -1,11 +1,13 @@
 "use client"
 import { configureStore } from '@reduxjs/toolkit'
 import planReducer from './reducer/planSlice'
+import subReducer from './reducer/subSlice'
 //import { combineReducers } from '@reduxjs/toolkit'
 
 export const store = configureStore({
-    reducer: {
-      plan:planReducer
+  reducer: {
+    plan: planReducer,
+    subs: subReducer
   },
 })
 

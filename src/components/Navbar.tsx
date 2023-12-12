@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import netflixlog from '../../public/Netflix_logo.svg';
 import languagesign from '../../public/Language-sign.svg';
+import Link from 'next/link';
 
 function Navbar({opacity,slate}:any) {
   return (
@@ -19,7 +20,9 @@ function Navbar({opacity,slate}:any) {
               <option value="Hindi" className=' text-slate-950'>हिन्दी</option>
             </select>
           </div>
-          <button type='button' className=' bg-customred-400 px-4 py-1 rounded-sm hover:bg-red-800 text-white h-full' >Sign In</button>
+          <Link href="/login">
+          <button type='button' className=' bg-customred-400 px-4 py-1 rounded-sm hover:bg-red-800 text-white h-full'  >Sign In</button>
+          </Link>
         </div>
       </nav>
     </header>

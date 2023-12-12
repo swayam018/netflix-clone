@@ -10,8 +10,24 @@ import strangerThings from "../../public/stranger-things.png";
 import downloadabutton from "../../public/download.json";
 import Lottie from "lottie-react";
 import Footer from "@/components/Footer";
+import { signupMail } from "@/store/reducer/planSlice";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    dispatch(signupMail(email));
+    if (email.length > 0) {
+      router.push('/signup/register');
+    }
+  }
+
   return (
     <main>
       <div className="bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_medium.jpg')]">
@@ -33,8 +49,11 @@ export default function Home() {
                 type="email"
                 placeholder="Enter your email address"
                 className=" outline-none text-lg py-2 pl-2 w-80 rounded-sm  text-slate-50 bg-slate-950 bg-opacity-80"
+                value={email}
+                onChange={(e) => { setEmail(e.target.value) }}
+                required
               />
-              <button className="text-slate-50 font-bold text-xl bg-customred-400 px-4 hover:bg-red-800 rounded-sm max-sm:py-2 max-sm:text-base ">
+              <button className="text-slate-50 font-bold text-xl bg-customred-400 px-4 hover:bg-red-800 rounded-sm max-sm:py-2 max-sm:text-base " onClick={ handleClick}>
                 Get Started <ChevronRightIcon />
               </button>
             </form>
