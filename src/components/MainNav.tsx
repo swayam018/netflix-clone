@@ -1,3 +1,4 @@
+"use client"
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
@@ -24,7 +25,7 @@ function MainNav() {
         }
     },[])
     return (
-        <header className={` transition-all duration-400 ${isScroll?"bg-black":"bg-transparent"}  fixed top-0 w-full`}>
+        <header className={` transition-all duration-400 ${isScroll?"bg-black":"bg-transparent"}  fixed top-0 w-full z-50`}>
             <nav className='flex gap-4 item-center flex-row py-5 justify-between px-10 max-md:px-8 max-sm:px-4'>
                 <div className='flex flex-row gap-14 max-md:gap-8'>
                     <Link href="/" > <Image src={netflixlog} alt="Netlix-Logo" width={107} height={40} className='' /></Link>

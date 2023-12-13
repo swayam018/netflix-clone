@@ -26,13 +26,9 @@ body {
     rgb(var(--background-start-rgb));
     
 }
-body::-webkit-scrollbar{
-  width: 0px;
-}
-body::-webkit-scrollbar-thumb{
-  border-radius: 10px;
-  background-color: red;
-}
-body::-webkit-scrollbar-track{
-  background-color: black;
+
+@layer base{
+  body{
+    @apply bg-[#141414] text-white !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-red-600;
+  }
 }
