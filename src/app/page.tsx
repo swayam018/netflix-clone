@@ -24,7 +24,7 @@ export default function Home() {
     e.preventDefault();
     dispatch(signupMail(email));
     if (email.length > 0) {
-      router.push('/signup/register');
+      router.push('/signup/password');
     }
   }
 
@@ -53,6 +53,7 @@ export default function Home() {
                 onChange={(e) => { setEmail(e.target.value) }}
                 required
               />
+              
               <button className="text-slate-50 font-bold text-xl bg-customred-400 px-4 hover:bg-red-800 rounded-sm max-sm:py-2 max-sm:text-base " onClick={ handleClick}>
                 Get Started <ChevronRightIcon />
               </button>

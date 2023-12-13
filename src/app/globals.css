@@ -27,7 +27,7 @@ body {
     
 }
 body::-webkit-scrollbar{
-  width: 5px;
+  width: 0px;
 }
 body::-webkit-scrollbar-thumb{
   border-radius: 10px;

@@ -7,15 +7,15 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 
-function Login() {
+
+function ForgotPassword() {
+
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [user, setUser] = useState(true);
     const router = useRouter();
 
     const handleClick = (e: any) => {
         e.preventDefault();
-        axios.post('/api/user/login', { email, password }).then((response) => {
+        axios.post('/api/user/login', { email }).then((response) => {
             if (response.data.success) {
                 toast.success(response.data.message);
                 router.push('/browse');
@@ -34,33 +34,22 @@ function Login() {
             <div className='h-full w-full bg-black bg-opacity-40 pb-80 max-lg:bg-opacity-100'>
                 <Navbar />
 
-                <div className='m-auto w-[470px] h-[470px] bg-black bg-opacity-70 flex flex-col item-center justify-center pl-10 gap-4 pr-10 mt-10  max-[523px]:w-82  '>
-                    <div className=' text-3xl '>Sign In</div>
+                <div className='m-auto w-[470px] py-10 bg-black bg-opacity-70 flex flex-col item-center justify-center pl-10 gap-4 pr-10 mt-10  max-[523px]:w-82  '>
+                    <div className=' text-3xl '>Forgot Password</div>
+                    <div className=' text-xl '>We will send you an email with instructions on how to reset your password.</div>
                     <form className='flex flex-col gap-5  w-86 max-[523px]:w-72 '>
                         <div className='flex flex-col gap-2   '>
                             <label htmlFor='email' >Email</label>
                             <input type="email" name='email' value={email} placeholder='Enter Email here....' onChange={(e) => setEmail(e.target.value)} className=' w-full h-11 border-2 border-gray-500 rounded-lg bg-[#333333] p-2 outline-none' />
                         </div>
-                        <div className='flex flex-col gap-2 '>
-                            <label htmlFor='password' className=' text-xl' >Password</label>
-                            <input type="password" name='password' value={password} onChange={(e) => setPassword(e.target.value)} className=' h-11 border-2  rounded-lg  bg-[#333333] p-2 outline-none border-gray-500 ' placeholder='Enter Password here....' />
-                        </div>
                         <div className='flex flex-col items-center'>
-                        <button type="submit" className=' w-8/12  h-10 bg-customred-400 text-slate-50 hover:bg-red-400 text-xl  rounded-lg' onClick={handleClick} >Sign in</button>
-                       </div>
+                            <button type="submit" className=' w-8/12  h-10 bg-customred-400 text-slate-50 hover:bg-red-400 text-xl  rounded-lg' onClick={handleClick} >Email me</button>
+                        </div>
                     </form>
-                    <div className=' flex flex-row justify-between '>
-                        <span>Remember me</span>
-                        <span>Need help?</span>
-                    </div>
-                    <div>
-                        <Link href="/signup/signupform">New To Netflix? Sign up Now</Link>
-                    </div>
                 </div>
             </div>
             <Footer />
         </div>
     )
 }
-
-export default Login
+export default ForgotPassword

@@ -10,7 +10,7 @@ function Navbar({opacity,slate}:any) {
     <header>
       <nav className={`flex flex-row items-center justify-between h-20 px-16 bg-slate-${slate} bg-opacity-${opacity} max-md:px-4 max-md:h-28 ` } >
         <div>
-          <Image src={netflixlog} alt="Netlix-Logo" width={146} height={40} />
+         <Link href="/" > <Image src={netflixlog} alt="Netlix-Logo" width={146} height={40} /></Link>
         </div>
         <div className='flex flex-row gap-5 '>
           <div className='flex flex-row pl-2 py-1 h-fit bg-slate-950  bg-opacity-50 rounded-sm shadow-2xl shadow-white max-sm:hidden' >
