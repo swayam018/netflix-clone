@@ -8,19 +8,14 @@ import React, { useEffect, useState } from 'react'
 
 
 function Browse() {
-  const [trendingMovie, setTrendingMovie]:any = useState([]);
-
-  useEffect(() => {
-    Trendig();
-  }, [])
-  
+  var trendingMovie={};
   const Trendig = async () => {
-    await axios.get('/api/movies/trending').then((res) => {
-      //console.log(res.data.resp)
-      setTrendingMovie(res.data.resp);
-    }).catch((err) => {
-      console.log(err);
-    })
+    try{
+      trendingMovie = await axios.get('/api/movies/trending');
+    }
+    catch(err:any) {
+      console.log("error occurred",err.message);
+    }
   }
 
   return (
@@ -32,11 +27,11 @@ function Browse() {
         <section className="md:space-y-24">
           <Row title="Trending Now" movie={trendingMovie}  />
           <Row title="Top Rated" movie={trendingMovie} />
-          {/*<Row title="Action Thrillers"  />
-          <Row title="Comedies"  />
-          <Row title="Scary Movies"  />
-          <Row title="Romance Movies"  />
-          <Row title="Documentaries"  />*/}
+          <Row title="Action Thrillers" movie={trendingMovie} />
+          <Row title="Comedies" movie={trendingMovie} />
+          <Row title="Scary Movies" movie={trendingMovie} />
+          <Row title="Romance Movies" movie={trendingMovie} />
+          <Row title="Documentaries" movie={trendingMovie} />
         </section>
       </main>
 

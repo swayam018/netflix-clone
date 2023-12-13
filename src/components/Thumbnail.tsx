@@ -1,5 +1,4 @@
 import Image from 'next/image'
-
 function Thumbnail({banner} :any) {
 
     return (
@@ -13,6 +12,6 @@ function Thumbnail({banner} :any) {
             />
         </div>
     )
-}
+} 
 
 export default Thumbnail
