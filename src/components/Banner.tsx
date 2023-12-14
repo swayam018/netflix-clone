@@ -1,15 +1,50 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { useDispatch, useSelector } from 'react-redux';
+import { addMovie } from '@/store/reducer/movieSlice';
+
+
+type Movie ={
+    title: string
+    backdrop_path: string
+    media_type?: string
+    release_date?: string
+    first_air_date: string
+    genre_ids: number[]
+    id: number
+    name: string
+    origin_country: string[]
+    original_language: string
+    original_name: string
+    overview: string
+    popularity: number
+    poster_path: string
+    vote_average: number
+    vote_count: number
+  }
 
 
 function Banner({banner}:any) {
-    const length = banner.length;
-    var randomNumber = Math.floor(Math.random() * length);
+    const dispatch = useDispatch();
+    const [movie,setMovie] = useState<Movie | null>(null);
+    useEffect(() => {
+        setMovie(
+            banner[Math.floor(Math.random() * banner.length)]
+        )
+      }, [banner]);
+
+      const clickHandler = ()=>{
+        dispatch(addMovie(movie));
+      }
+      if (!movie) {
+        return null; // or you can render a loading state
+      }
     return (
-        <div className="flex flex-col space-y-2 py-20 justify-end md:space-y-4 h-[65vh] lg:h-[80vh] lg:justify-end  lg:pb-8 ">
+        <div className="flex flex-col space-y-2 py-20 justify-end md:space-y-4 h-[65vh] md:h-[85vh] lg:justify-end  lg:pb-4 ">
             <div className="absolute top-0 left-0 -z-10 h-[100vh] w-screen ">
                 <Image
-                    src={`https://image.tmdb.org/t/p/original${banner[randomNumber]?.poster_path ||undefined}`}
+                    src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
                     alt="banner"
                     sizes="100vw"
                     style={{
@@ -23,14 +58,14 @@ function Banner({banner}:any) {
                 />
             </div>
             <h1 className="text-2xl font-bold md:text-4xl lg:text-4xl ">
-                {banner[randomNumber]?.title|| ""}
+                {movie?.title|| ""}
             </h1>
             <p className="max-w-xs text-xs text-shadow-md md:max-w-lg md:text-lg lg:max-w-2xl lg:text-2xl">
-                {banner[randomNumber]?.overview||""}
+                {movie?.overview||""}
             </p>
 
             <div className="flex space-x-3">
-                <button className=" bg-white text-black px-4 py-2 flex flex-row items-center">
+                <button className=" bg-white text-black px-4 py-2 flex flex-row items-center" onClick={clickHandler}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                         <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
                     </svg>

@@ -39,9 +39,8 @@ function Row({ title,movies }: any) {
           className="flex items-center overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2 p-2 space-x-2"
         >
           {movies.map((movie:any) => (
-             <Thumbnail banner={movie.poster_path} key={movie.id} />
+             <Thumbnail allmovies={movie} key={movie.id} />
           ))}
-          
         </div>
 
         <ChevronRightIcon

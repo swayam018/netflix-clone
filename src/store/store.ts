@@ -2,12 +2,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import planReducer from './reducer/planSlice'
 import subReducer from './reducer/subSlice'
+import movieReducer from './reducer/movieSlice'
 //import { combineReducers } from '@reduxjs/toolkit'
 
 export const store = configureStore({
   reducer: {
     plan: planReducer,
-    subs: subReducer
+    subs: subReducer,
+    movie: movieReducer
   },
 })
 

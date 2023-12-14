@@ -11,7 +11,7 @@ const initialState : plan = {
     mail:""
 }
 
-export const planSlice = createSlice({
+export const planSlice:any = createSlice({
     name: "plan",
     initialState,
     reducers: {
