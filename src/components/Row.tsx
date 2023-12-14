@@ -3,10 +3,9 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import { useRef, useState } from 'react'
 import Thumbnail from './Thumbnail'
 
-function Row({ title,movie }: any) {
+function Row({ title,movies }: any) {
   const rowRef = useRef<HTMLDivElement>(null)
   const [isMoved, setIsMoved] = useState(false)
-  console.log(movie);
 
   const handleClick = (direction: string) => {
     setIsMoved(true)
@@ -37,10 +36,10 @@ function Row({ title,movie }: any) {
         />
         <div
           ref={rowRef}
-          className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2"
+          className="flex items-center overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2 p-2 space-x-2"
         >
-          {movie.map((movies:any) => (
-             <Thumbnail banner={movies.poster_path} />
+          {movies.map((movie:any) => (
+             <Thumbnail banner={movie.poster_path} key={movie.id} />
           ))}
           
         </div>
