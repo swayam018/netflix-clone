@@ -27,26 +27,17 @@ type Movie ={
 
 function Banner({banner}:any) {
     const dispatch = useDispatch();
-    const [movie,setMovie] = useState<Movie | null>(null);
-    useEffect(() => {
-        setMovie(
-            banner[Math.floor(Math.random() * banner.length)]
-        )
-      }, [banner]);
-
       const clickHandler = ()=>{
-        dispatch(addMovie(movie));
+        dispatch(addMovie(banner));
       }
-    
-      if (!movie) {
-        // Return null or loading state until image is loaded
+      if(!banner?.poster_path){
         return null;
       }
     return (
         <div className="flex flex-col space-y-2 py-20 justify-end md:space-y-4 h-[65vh] md:h-[85vh] lg:justify-end  lg:pb-4 ">
             <div className="absolute top-0 left-0 -z-10 h-[100vh] w-screen ">
                 <Image
-                    src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
+                    src={`https://image.tmdb.org/t/p/original${banner?.poster_path}`}
                     alt="banner"
                     sizes="100vw"
                     style={{
@@ -60,10 +51,10 @@ function Banner({banner}:any) {
                 />
             </div>
             <h1 className="text-2xl font-bold md:text-4xl lg:text-4xl ">
-                {movie?.title|| ""}
+                {banner?.title|| ""}
             </h1>
             <p className="max-w-xs text-xs text-shadow-md md:max-w-lg md:text-lg lg:max-w-2xl lg:text-2xl">
-                {movie?.overview||""}
+                {banner?.overview||""}
             </p>
 
             <div className="flex space-x-3">

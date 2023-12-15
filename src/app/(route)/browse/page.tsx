@@ -16,12 +16,13 @@ async function Browse() {
   const scary = await HorrorMovie();
   const romance = await RomanceMovie();
   const documentary = await Documentray();
+  var rn= Math.floor(Math.random() * netflixOriginal.length);
 
   return (
     <div className=' h-full bg-gradient-to-b from-gray-800/10 to-[#0b1126] relative overflow-x-hidden overflow-y-hidden '>
       <MainNav />
       <main className='  pl-10 max-lg:pl-8 max-md:pl-4 pb-20'>
-        <Banner banner={netflixOriginal} />
+        <Banner banner={netflixOriginal[rn]} />
         <section className="md:space-y-24">
           <Row title="Trending Now" movies={trendingMovies} />
           <Row title="Top Rated" movies={topRated} />

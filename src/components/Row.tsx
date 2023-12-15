@@ -14,7 +14,7 @@ function Row({ title,movies }: any) {
       const { scrollLeft, clientWidth } = rowRef.current
 
       const scrollTo =
-        direction === 'left'
+        direction === 'left' 
           ? scrollLeft - clientWidth
           : scrollLeft + clientWidth
 
