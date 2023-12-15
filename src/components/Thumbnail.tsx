@@ -1,32 +1,22 @@
 "use client"
 import { addMovie } from '@/store/reducer/movieSlice';
 import Image from 'next/image'
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-
-type Movie ={
-    title: string
-    backdrop_path: string
-    media_type?: string
-    release_date?: string
-    first_air_date: string
-    genre_ids: number[]
-    id: number
-    name: string
-    origin_country: string[]
-    original_language: string
-    original_name: string
-    overview: string
-    popularity: number
-    poster_path: string
-    vote_average: number
-    vote_count: number
-  }
 
 function Thumbnail({allmovies} :any) {
     const dispatch = useDispatch();
 
+    const [movie,setMovie]:any = useState({});
+    useEffect(() => {
+          setMovie(allmovies)
+      }, [allmovies]);
+
     const clickHandler = ()=>{
         dispatch(addMovie(allmovies));
+      }
+      if(!movie){
+        return null;
       }
 
     return (
