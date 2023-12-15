@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React from 'react'
 import netflixlog from '../../public/Netflix_logo.svg';
-import languagesign from '../../public/Language-sign.svg';
+import languagesign from '../../public/translate.png';
 import Link from 'next/link';
 
 function Navbar({opacity,slate}:any) {
@@ -13,7 +13,7 @@ function Navbar({opacity,slate}:any) {
          <Link href="/" > <Image src={netflixlog} alt="Netlix-Logo" width={146} height={40} /></Link>
         </div>
         <div className='flex flex-row gap-5 '>
-          <div className='flex flex-row pl-2 py-1 h-fit bg-slate-950  bg-opacity-50 rounded-sm shadow-2xl shadow-white max-sm:hidden' >
+          <div className='flex flex-row pl-2 py-1 h-fit bg-slate-950  bg-opacity-50 rounded-sm  max-lg:hidden' >
             <Image src={languagesign} alt="Language-Sign" width={20} height={7} className=' ml-2' />
             <select name='language' className=' outline-none bg-transparent flex items-center justify-center appearance-none px-5 text-slate-50 ' >
               <option value="English" className=' text-slate-950'>English</option>

@@ -3,12 +3,14 @@ import { createSlice } from '@reduxjs/toolkit'
 
 interface plan {
     price: number,
-    mail: string
+    mail: string,
+    user:boolean
 }
 
 const initialState : plan = {
     price: 149,
-    mail:""
+    mail:"",
+    user:false
 }
 
 export const planSlice:any = createSlice({
@@ -20,9 +22,17 @@ export const planSlice:any = createSlice({
         },
         signupMail: (state, action) => {
            state.mail=action.payload 
+        },
+        settingUser:(state,action)=>{
+            state.user = true
+        },
+        loggingUser:(state,action)=>{
+            state.user = false;
+            state.price=0
+            state.mail=""
         }
     }
 });
 
-export const { selectPrice,signupMail } = planSlice.actions;
+export const { selectPrice,signupMail,settingUser,loggingUser} = planSlice.actions;
 export default planSlice.reducer;

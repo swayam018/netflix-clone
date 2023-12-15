@@ -2,8 +2,9 @@ import Banner from '@/components/Banner';
 import MainNav from '@/components/MainNav';
 import Row from '@/components/Row';
 import React from 'react'
-import { TopRated, TrendingMovie, NetflixOriginal, ActionMovie, ComdeyMovie, HorrorMovie, RomanceMovie, Documentray } from '@/helpers';
+import { TopRated, TrendingMovie, NetflixOriginal, ActionMovie, ComdeyMovie, HorrorMovie, RomanceMovie, Documentray } from '@/helpers/moviedata';
 import Modal from '@/components/Modal';
+import Mylist from '@/components/Mylist';
 
 
 async function Browse() {
@@ -26,6 +27,7 @@ async function Browse() {
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Thrillers" movies={action} />
           <Row title="Comedies" movies={comedy} />
+          <Mylist/>
           <Row title="Scary Movies" movies={scary} />
           <Row title="Romance Movies" movies={romance} />
           <Row title="Documentaries" movies={documentary} />

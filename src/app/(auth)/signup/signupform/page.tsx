@@ -4,9 +4,10 @@ import Navbar from '@/components/Navbar'
 import axios from 'axios'
 import Link from 'next/link'
 import React, { useState ,useEffect} from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import { settingUser, signupMail } from '@/store/reducer/planSlice'
 
 function SingUpForm() {
     const statemail = useSelector((state: any) => state.plan);
@@ -14,18 +15,20 @@ function SingUpForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
     useEffect(() => {
         if (statemail.mail.length > 0) {
             setEmail(statemail.mail);
-            console.log(email);
         }
     }, [statemail.mail]);
 
     const handleClick = async (e: any) => {
-        setLoading(true);
         e.preventDefault();
+        setLoading(true);
+        dispatch(signupMail(email));
         axios.post('/api/user/signup',{email,password}).then((response) => {
             if (response.data.success) {
+                dispatch(settingUser(response.data.message));
                 toast.success(response.data.message);
                 router.push('/signup');
             }
@@ -49,10 +52,10 @@ function SingUpForm() {
                     <span className=' text-4xl font-bold '>Create a password to start your membership</span>
                     <span className=' text-xl '>Just a few more steps and you're done!
                         We hate paperwork, too.</span>
-                    <form>
-                        <input type='email' placeholder='Email' className='w-full text-xl pl-2 py-2 border border-gray-400 outline-none my-2 rounded-md' value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                        <input type='password' placeholder='Password' className='w-full text-xl py-2 pl-2 border border-gray-400 my-2 outline-none rounded-md' value={password} onChange={(e) => { setPassword(e.target.value) }} />   
-                    <button className=' bg-red-700 px-8 py-2 rounded-md w-full hover:bg-customred-400 text-slate-50 text-2xl' onClick={handleClick}>{loading===true?"Next":"Loading...."}</button>
+                    <form onSubmit={handleClick}>
+                        <input type='email' placeholder='Email' className='w-full text-xl pl-2 py-2 border border-gray-500 outline-none my-2 rounded-md text-gray-700' value={email} onChange={(e)=>setEmail(e.target.value)} required/>
+                        <input type='password' placeholder='Add Password' className='w-full text-xl py-2 pl-2 border border-gray-500 my-2 outline-none rounded-md text-gray-700' value={password} onChange={(e) => { setPassword(e.target.value) }} required />   
+                    <button className=' bg-red-700 px-8 py-2 rounded-md w-full hover:bg-customred-400 text-slate-50 text-2xl'>{loading?"Loading....":"Next"}</button>
                     </form>
                 </div>
                 <Footer />

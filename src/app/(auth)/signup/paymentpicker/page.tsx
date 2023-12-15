@@ -1,9 +1,7 @@
 "use client"
 import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
 import Image from 'next/image';
 import tickround from '../../../../../public/check-mark.png';
-//import { checkout } from '@/components/Checkout';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import visa from '../../../../../public/VISA.png'
@@ -12,6 +10,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { loadStripe } from "@stripe/stripe-js";
 import { useDispatch } from 'react-redux';
 import { isSubscribed } from "@/store/reducer/subSlice";
+import Header from '@/components/Header';
 
 function PaymentPicker() {
     const prices: any = useSelector((state: any) => state.plan);
@@ -60,7 +59,7 @@ function PaymentPicker() {
 
     return (
         <div className='bg-white'>
-            <Navbar opacity={0} slate={50} />
+          <Header/>
             <hr />
             <div className=' bg-slate-50 h-full flex flex-col items-center gap-10 pt-10 '>
                 <div className=' [&>*]:text-slate-950 flex flex-col gap-5 w-86 justify-center max-[458px]:w-76 pb-16'>

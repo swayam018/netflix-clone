@@ -14,18 +14,25 @@ import { signupMail } from "@/store/reducer/planSlice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const handleClick = (e: any) => {
+  const handleClick =async (e: any) => {
     e.preventDefault();
     dispatch(signupMail(email));
-    if (email.length > 0) {
-      router.push('/signup/password');
-    }
+
+    await axios.post('/api/user/userexist',{email}).then((response)=>{
+      if(response.data.success){
+        router.push('/signup/password');
+      }
+      else{
+        router.push('/signup/register');
+      }
+    })
   }
 
   return (
@@ -33,7 +40,7 @@ export default function Home() {
       <div className="bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_medium.jpg')]">
         <Navbar opacity={70} slate={950} />
         <div className="flex bg-slate-950 bg-opacity-70 pt-56 pb-40 items-center justify-center max-sm:pt-19 max-md:pt-28 max-sm:pb-20">
-          <div className="flex flex-col w-10/12 justify-center item-center gap-5">
+          <div className="flex flex-col w-8/12 justify-center item-center gap-5 max-lg:w-10/12">
             <span className=" text-5xl text-slate-50 font-bold text-center max-sm:text-4xl">
               The biggest Indian hits. Ready to watch here from ₹149.
             </span>
@@ -44,17 +51,16 @@ export default function Home() {
               Ready to watch? Enter your email to create or restart your
               membership.
             </span>
-            <form className="flex flex-row justify-center gap-4 max-sm:flex-col max-sm:items-center">
+            <form className="flex flex-row justify-center gap-4 max-md:flex-col max-md:items-center" onSubmit={handleClick}>
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className=" outline-none text-lg py-2 pl-2 w-80 rounded-sm  text-slate-50 bg-slate-950 bg-opacity-80"
+                className=" input outline-none text-lg py-3 pl-2 w-86 rounded  text-slate-50 max-[467px]:w-80 max-[380px]:w-76"
                 value={email}
                 onChange={(e) => { setEmail(e.target.value) }}
-                required
+                required={true}
               />
-              
-              <button className="text-slate-50 font-bold text-xl bg-customred-400 px-4 hover:bg-red-800 rounded-sm max-sm:py-2 max-sm:text-base " onClick={ handleClick}>
+              <button type="submit" className="text-slate-50 font-bold text-xl bg-customred-400 px-4 hover:bg-red-800 rounded-sm max-md:py-2 max-md:text-base " >
                 Get Started <ChevronRightIcon />
               </button>
             </form>
@@ -110,7 +116,7 @@ export default function Home() {
             height={80}
             className="relative z-10"
           />
-          <div className=" w-fit h-24 flex flex-row gap-5 bg-black border-2 border-hrbar-400 rounded-lg p-2 relative bottom-28 left-24 z-50  max-[517px]:bottom-20 max-[517px]:left-28 max-[491px]:left-28 max-[459px]:gap-4 max-[517px]:h-17 max-[468px]:left-24 max-[416px]:left-20  max-[389px]:left-17 max-[362px]:left-12">
+          <div className=" w-fit h-24 flex flex-row gap-5 bg-black border-2 border-hrbar-400 rounded-lg p-2 relative bottom-28 left-24 z-50  max-[517px]:bottom-20 max-[517px]:left-28 max-[491px]:left-28 max-[459px]:gap-4 max-[517px]:h-17 max-[468px]:left-24 max-[416px]:left-20  max-[389px]:left-17 max-[362px]:left-12 max-[460px]:bottom-16">
             <Image
               src={strangerThings}
               alt="stranger-things"
@@ -165,7 +171,7 @@ export default function Home() {
               autoPlay
               loop
               muted
-              className="absolute inset-y-9 inset-x-23 z-0 max-[476px]:inset-y-8 max-[476px]:inset-x-19 max-[416px]:inset-x-17 max-[398px]:inset-y-7 max-[364px]:insest-x-2"
+              className="absolute inset-y-9 inset-x-23 z-0 max-[476px]:inset-y-8 max-[476px]:inset-x-19 max-[416px]:inset-x-17 max-[398px]:inset-y-7 max-[368px]:inset-x-16 max-[349px]:inset-x-14"
             >
               <source
                 src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices-in.m4v"

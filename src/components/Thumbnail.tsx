@@ -1,7 +1,6 @@
 "use client"
 import { addMovie } from '@/store/reducer/movieSlice';
 import Image from 'next/image'
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 type Movie ={
@@ -44,6 +43,7 @@ function Thumbnail({allmovies} :any) {
                   }}
                   width={200}
                   height={300}
+                  priority={true}
             />
         </div>
     )

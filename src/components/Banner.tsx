@@ -37,8 +37,10 @@ function Banner({banner}:any) {
       const clickHandler = ()=>{
         dispatch(addMovie(movie));
       }
+    
       if (!movie) {
-        return null; // or you can render a loading state
+        // Return null or loading state until image is loaded
+        return null;
       }
     return (
         <div className="flex flex-col space-y-2 py-20 justify-end md:space-y-4 h-[65vh] md:h-[85vh] lg:justify-end  lg:pb-4 ">

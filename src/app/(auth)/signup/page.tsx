@@ -1,16 +1,21 @@
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
+"use client"
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react'
 import tickround from '../../../../public/check-mark.png';
 import tick from '../../../../public/tick.png';
-
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import netflixlog from '../../../../public/Netflix_logo.svg';
+import Header from '@/components/Header';
 
 function Signup() {
+    const router = useRouter();
+    const handleClick= async ()=>{
+        router.push('signup/planform');
+    }
     return (
         <div className='bg-white'>
-            <Navbar opacity={0} slate={50} />
+            <Header/>
             <hr />
             <div className=' bg-slate-50 h-full flex flex-col items-center gap-10 pt-10 '>
                 <div className=' [&>*]:text-slate-950 flex flex-col gap-5 w-82 justify-center max-[458px]:w-76 pb-16'>
@@ -29,9 +34,9 @@ function Signup() {
                         <Image src={tick} alt='settingup' width={32} height={32} />
                         <span className='text-lg'>No ads and no extra fees. Ever.</span>
                     </div>
-                    <button className=' bg-red-700 px-8 py-2 rounded-md w-full hover:bg-customred-400 mt-4'><Link href="/signup/planform" className=' text-slate-50 text-2xl'>Next</Link></button>
+                    <button className=' bg-red-700 px-8 py-2 rounded-md w-full hover:bg-customred-400 mt-4 font-semibold tracking-widest' onClick={handleClick}><span className='text-2xl text-white'>Next</span></button>
                 </div>
-                <Footer />
+                {/* <Footer /> */}
             </div>
         </div>
     )
