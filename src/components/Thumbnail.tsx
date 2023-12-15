@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 
 function Thumbnail({allmovies} :any) {
     const dispatch = useDispatch();
-
     const [movie,setMovie]:any = useState({});
     useEffect(() => {
           setMovie(allmovies)

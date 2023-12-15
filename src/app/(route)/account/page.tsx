@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
-// import Membership from '../components/Membership'
+import { useSelector } from 'react-redux'
 
 function Account() {
-
+  const userData = useSelector((state:any)=>state.user);
   return (
     <div>
       <Head>
