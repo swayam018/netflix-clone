@@ -15,6 +15,7 @@ import Header from '@/components/Header';
 function PaymentPicker() {
     const prices: any = useSelector((state: any) => state.plan);
     const dispatch = useDispatch();
+    const email= prices.mail;
     const [planid, setPlanid] = useState("");
 
     useEffect(() => {
@@ -43,16 +44,16 @@ function PaymentPicker() {
         }
         const stripe = await getstripe();
         try {
-            await stripe.redirectToCheckout({
+            stripe.redirectToCheckout({
                 mode: "payment",
                 lineItems,
-                successUrl: window.location.origin,
+                successUrl: 'http://localhost:3000/browse',
                 cancelUrl: window.location.origin,
             }).then(() => {
+                console.log("payment successful");
                 dispatch(isSubscribed(true)); 
-              });
+              })
             } catch (error) {
-              // Handle any errors during checkout
               console.error(error);
             }
     }

@@ -1,18 +1,29 @@
 "use client"
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import planReducer from './reducer/planSlice'
 import subReducer from './reducer/subSlice'
 import movieReducer from './reducer/movieSlice'
-//import { combineReducers } from '@reduxjs/toolkit'
 import userReducer from './reducer/userSlice'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' 
+
+
+const persistConfig = {
+  key: 'anything',
+  storage,
+}
+
+const rootReducer = combineReducers( {
+  plan: planReducer,
+  subs: subReducer,
+  movie: movieReducer,
+  user:userReducer
+})
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
-  reducer: {
-    plan: planReducer,
-    subs: subReducer,
-    movie: movieReducer,
-    user:userReducer
-  },
+  reducer:persistedReducer,
 })
 
 

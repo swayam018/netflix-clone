@@ -14,7 +14,7 @@ export const subSlice = createSlice({
     reducers: {
         isSubscribed: (state, action) => {
             console.log("reducer called");
-            state.subs= action.payload
+            state.subs= true
         }
     }
 })

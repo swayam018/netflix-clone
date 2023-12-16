@@ -28,6 +28,8 @@
     "react-hot-toast": "^2.4.1",
     "react-player": "^2.13.0",
     "react-redux": "^9.0.4",
+    "redux-persist": "^6.0.0",
+    "stripe": "^14.9.0",
     "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {

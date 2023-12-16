@@ -27,6 +27,8 @@ type Movie ={
 
 function Banner({banner}:any) {
     const dispatch = useDispatch();
+    const data = useSelector((state:any)=>state);
+    console.log(data);
       const clickHandler = ()=>{
         dispatch(addMovie(banner));
       }

@@ -16,6 +16,7 @@ function SingUpForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
+    const [edittext,setEdittext]= useState(false)
     useEffect(() => {
         if (statemail.mail.length > 0) {
             setEmail(statemail.mail);
@@ -51,9 +52,10 @@ function SingUpForm() {
                     <span className=' text-4xl font-bold '>Welcome back!</span>
                     <span className=' text-4xl font-bold '>Joining Netflix is easy.</span>
                     <span className=' text-xl '>Enter your password and you'll be watching in no time.</span>
+                        <button onClick={()=>setEdittext(true)}>edit</button>
                     <form onSubmit={handleClick}>
                         <label htmlFor='email' className=' text-xl' >Email</label>
-                        <input type='email' placeholder='Email' className='w-full text-xl pl-2 py-2 outline-none my-2 rounded-md' value={email} readOnly />
+                        <input type='email' placeholder='Email' className={`w-full text-xl py-2 pl-2 -400 my-2 outline-none rounded-md ${!edittext?"border border-transparent":"border border-gray-400"} `} value={email} readOnly={!edittext} onChange={(e)=>setEmail(e.target.value)} />
                         <label htmlFor='password' className=' text-xl' >Password</label>
                         <input type='password' placeholder='Password' className='w-full text-xl py-2 pl-2 border border-gray-400 my-2 outline-none rounded-md' value={password} onChange={(e) => { setPassword(e.target.value) }} required/>
                         <div className="py-2" ><Link href="/forgotpassword" className=' text-lg text-blue-700'>Forgot your password?</Link></div>
